@@ -1,9 +1,10 @@
 const express=require("express");
 const authController= require('./controllers/auth.controller')
-
+const cookieParser=require("cookie-parser")
 const app=express();
 
-app.use(express.json());  //middlewware
+app.use(express.json());  //middlewwa;re
+app.use(cookieParser())
 
 
 
@@ -15,13 +16,13 @@ const authRouter = require("./routes/auth.routes");
 
 
 
- /**
-  * @routes POST /api/auth/register
-  * @desc Register new User
-  * @access Public
-  */
+//  /**
+//   * @routes POST /api/auth/register
+//   * @desc Register new User
+//   * @access Public
+//   */
 
-   authRouter.post("/register",authController.registerUser)
+//    authRouter.post("/register",authController.registerUser)
 
 
 
