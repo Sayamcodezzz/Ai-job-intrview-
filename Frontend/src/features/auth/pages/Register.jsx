@@ -1,6 +1,7 @@
 import React from 'react'
 import "../auth.form.scss"
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from '../hooks/useAuth';
 
 const Register = () => {
 const navigate=useNavigate()
@@ -8,6 +9,7 @@ const navigate=useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
   }
+  const {username,email,password}=useAuth();
 
 
   return (
@@ -21,19 +23,31 @@ const navigate=useNavigate()
 
           <div className="input-group">
             <label htmlFor="username">Username</label>
-            <input type="text" id='username' name='username' placeholder='Enter Username' />
+            <input 
+            onChange={(e)=>{
+              username(e.target.value);
+            }}
+            type="text" id='username' name='username' placeholder='Enter Username' />
 
           </div>
 
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id='email' name='email' placeholder='Enter email address' />
+            <input 
+            onChange={(e)=>{
+              email(e.target.value);
+            }}
+            type="email" id='email' name='email' placeholder='Enter email address' />
 
           </div>
 
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input type="password" id='password' name='password' placeholder='Enter password' />
+            <input 
+            onChange={(e)=>{
+              password(e.target.value)
+            }}
+            type="password" id='password' name='password' placeholder='Enter password' />
 
           </div>
 

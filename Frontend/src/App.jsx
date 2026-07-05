@@ -5,6 +5,8 @@ import Register from  "./features/auth/pages/Register.jsx"
 import Login from "./features/auth/pages/Login.jsx"
 // import './style.scss'   
 
+import { AuthProvider } from "./features/auth/auth.context.jsx";
+
 
 const App = () => {
   return <RouterProvider router={router}/>
