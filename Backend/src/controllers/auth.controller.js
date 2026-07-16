@@ -137,10 +137,13 @@ async function getMe(req,res){
 
    res.status(200).json({
     message:"User Details fetched successfully",
-    id:user._id,
-    username:user.username,
-    email:user.email,
-   })
+    user:{
+
+        id:user._id,
+        username:user.username,
+        email:user.email,
+    },
+   });
 
 }
 

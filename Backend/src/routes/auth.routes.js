@@ -7,11 +7,13 @@ const {Router}=require("express");   // by destructring the express router direc
 const authRouter = Router();
 const authUser=require('../middleware/auth.middleware').authUser
 
+
 /**
  * @Route POST /api/auth/register
  * @description Register a new user , with username, email and password
  * @access Public
  */
+
 
 authRouter.post("/register",registerUser);
 
