@@ -3,7 +3,12 @@ require("dotenv").config();
 const app = require("./src/app");
 const connectToDB = require("./src/config/database");
 
-connectToDB();
+const invokeGeminiAI = require("./src/services/ai.service");
+(async()=>{
+
+    invokeGeminiAI()
+    connectToDB();
+})();
 
 const PORT = process.env.PORT || 3000;
 
