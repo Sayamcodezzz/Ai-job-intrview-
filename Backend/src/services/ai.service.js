@@ -9,21 +9,21 @@ const ai = new GoogleGenAI({
 
 const interviewReportSchema = z.object({
     technicalQuestions: z.array(z.object({
-        question=z.string().description("The technical question can be ask in the interview"),
-        intention=z.string().description("The intention of interview behind asking this question"),
-        answer=string.description("How to answer this question , what points to cover , what approach to take etc,")
-    })).description("Technical questions that can be asked in the interview along with their intention and how to answer that"),
+        question=z.string().describe("The technical question can be ask in the interview"),
+        intention=z.string().describe("The intention of interview behind asking this question"),
+        answer=string.describe("How to answer this question , what points to cover , what approach to take etc,")
+    })).describe("Technical questions that can be asked in the interview along with their intention and how to answer that"),
        
     behaviouralQuestions: z.array(z.object({
-         question=z.string().description("The technical question can be ask in the interview"),
-        intention=z.string().description("The intention of interview behind asking this question"),
-        answer=string.description("How to answer this question , what points to cover , what approach to take etc,")
-    })).description("Technical questions that can be asked in the interview along with their intention and how to answer that"),
+         question=z.string().describe("The technical question can be ask in the interview"),
+        intention=z.string().describe("The intention of interview behind asking this question"),
+        answer=string.describe("How to answer this question , what points to cover , what approach to take etc,")
+    })).describe("Technical questions that can be asked in the interview along with their intention and how to answer that"),
        
     skillGap=z.array(z.object({
-        skill=z.string().description("The skill which the candidate is lacking "),
-        severity=z.enum(["low","medium","high"]).description("The severity of this gap i.e, how important is this skill for this job "),
-    })).description("List of skill gaps in the candidate's profile aling with their severity"),
+        skill=z.string().describe("The skill which the candidate is lacking "),
+        severity=z.enum(["low","medium","high"]).describe("The severity of this gap i.e, how important is this skill for this job "),
+    })).describe("List of skill gaps in the candidate's profile aling with their severity"),
    
 
     preparationPlan: z.array(z.object({
@@ -37,7 +37,9 @@ const interviewReportSchema = z.object({
 async function generateInterviewReport({resume,selfDescription,jobDescription}){
 
     const prompt = `Generate an interview report for a candidate with the following details:
-                    Resume: ${resume} Self Description: ${selfDescription} Job Description: ${jobDescription}`
+                    Resume: ${resume} 
+                    Self Description: ${selfDescription}
+                     Job Description: ${jobDescription}`
 
     const response =await ai.models.generateContent({
         model:"gemini-3.1-flash-lite",
